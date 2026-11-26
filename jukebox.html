@@ -140,7 +140,12 @@ input[type="range"].seek-bar{flex:1;accent-color:var(--mustard);height:4px;curso
 input[type="range"].vol-slider{width:96px;accent-color:var(--mustard);cursor:pointer}
 .speaker-grille{height:54px;border-radius:8px;border:2px solid var(--ink);background:repeating-linear-gradient(90deg,#FFFFFF 0 5px,#64748B 5px 11px);box-shadow:inset 0 0 22px rgba(255,197,61,.55);display:flex;align-items:center;justify-content:center}
 .grille-plate{padding:5px 14px 3px;border-radius:4px;background:linear-gradient(180deg,#FFE299 0%,#E9B44C 100%);color:#1A0C04;font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.24em;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
-.footer{text-align:center;font-size:.7rem;color:var(--ink-soft);line-height:1.55;max-width:640px}
+.footer{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;text-align:left;width:100%;max-width:880px}
+.footer-left{text-align:center;align-self:center}
+.footer-right{border-left:2px solid var(--ink-soft);padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.66rem;opacity:.95}
+.footer-right .footer-h{font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.footer-right code{font-size:.95em}
+@media (max-width:640px){.footer{grid-template-columns:1fr}.footer-right{border-left:0;border-top:2px solid var(--ink-soft);padding:10px 0 0}}
 .footer a{color:var(--teal);font-weight:700;text-decoration:none}
 .footer-credit{margin-top:3px;font-size:.66rem;opacity:.9}
 .genre-legend{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:640px}
@@ -277,8 +282,17 @@ input[type="range"].vol-slider{width:96px;accent-color:var(--mustard);cursor:poi
       <span><i style="background:#15803D"></i>History</span>
     </div>
     <footer class="footer">
-      <div>Public-domain Old Time Radio broadcasts streamed via the <a href="https://archive.org/details/oldtimeradio" target="_blank" rel="noopener noreferrer">Internet Archive</a>.</div>
-      <div class="footer-credit">Created by Ed Johnson with a Gemini AI assist. &middot; MIT License &middot; November 2026</div>
+      <div class="footer-left">
+        <div>Public-domain Old Time Radio broadcasts streamed via the <a href="https://archive.org/details/oldtimeradio" target="_blank" rel="noopener noreferrer">Internet Archive</a>.</div>
+        <div class="footer-credit">Created by Ed Johnson with a Gemini AI assist. &middot; MIT License &middot; November 2026</div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-h">Credits, Audio Rights &amp; License</div>
+        <div><b>Code:</b> Created by Ed Johnson with a Gemini AI assist; MIT License.</div>
+        <div><b>Audio:</b> Not hosted or redistributed here. All broadcasts stream directly from the <a href="https://archive.org/details/oldtimeradio" target="_blank" rel="noopener noreferrer">Internet Archive</a> (including collections preserved by the Old Time Radio Researchers Group) under their public-domain or Archive-listed terms. Broken stream or rights concern? Open an issue on <a href="https://github.com/edjohnson100/golden-age-radio-pwa" target="_blank" rel="noopener noreferrer">GitHub</a>.</div>
+        <div><b>Typography &amp; Artwork:</b> Bebas Neue, Inter, Pacifico and Playfair Display via Google Fonts (open-source licenses). Cabinet/jukebox artwork and app icons are original, with no third-party hardware trademarks.</div>
+        <div><b>Privacy:</b> 100% client-side &mdash; no backend, analytics, cookies or tracking. Only <code>localStorage</code> remembers volume, station and shuffle.</div>
+      </div>
     </footer>
   </main>
 
