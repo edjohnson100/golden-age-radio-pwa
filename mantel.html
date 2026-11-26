@@ -1,0 +1,1351 @@
+<!--
+  GOLDEN AGE RADIO — Mantel Clock-Radio (Atomic 50s theme, v2)
+  Google Sites embed: Insert > Embed > Embed code, paste this whole file, set height ~1250px (desktop) / ~1450px (mobile stack).
+  NAV LINKS: replace the three href="#" links in .site-nav / .switch-note with your real Google Site page URLs
+  (Home, Mantel Radio, Jukebox). Search for data-site-page="home|mantel|jukebox".
+  All playback, episode data and Archive.org catalog code is unchanged from the original.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Age Radio · 1956 Mantel Clock-Radio</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#0F766E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Golden Age" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+/* Golden Age Radio — Atomic 50s theme · Mantel Clock-Radio */
+:root{
+  --cream:#FFF6DE; --paper:#FFEEC0; --paper2:#FFFDF4;
+  --ink:#22201C; --ink-soft:#4A4438;
+  --teal:#0F766E; --teal-bright:#14B8A6; --teal-dark:#0A4F4A;
+  --coral:#FF6B4A; --mustard:#FFC53D; --gold:#E9B44C;
+  --ruby:#D9382B; --plum:#7C4DA0; --sky:#2D9CDB; --pink:#FF8FA3;
+  --mahogany-bright:#8A3A1E; --mahogany-mid:#5B2210; --mahogany-dark:#331107;
+  --brass-bright:#F0CB75; --brass-mid:#C4933B;
+  --cream-muted:#7A6A4F;
+  --shadow-hard:5px 5px 0 var(--ink);
+  --shadow-hard-sm:3px 3px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scrollbar-color:var(--teal) var(--paper)}
+body{
+  min-height:100vh;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(20,184,166,.16) 0 90px, transparent 91px),
+    radial-gradient(circle at 88% 12%, rgba(255,107,74,.14) 0 110px, transparent 111px),
+    radial-gradient(circle at 50% 108%, rgba(255,197,61,.28) 0 180px, transparent 181px),
+    repeating-conic-gradient(from 0deg at 50% -10%, rgba(15,118,110,.05) 0deg 6deg, transparent 6deg 18deg),
+    var(--cream);
+  display:flex;flex-direction:column;align-items:center;padding:0 12px 28px;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(34,32,28,.10) 1.2px, transparent 1.3px);background-size:26px 26px;opacity:.35}
+body.radio-on{background:
+  radial-gradient(circle at 50% 30%, rgba(255,197,61,.32) 0%, rgba(255,197,61,.08) 42%, transparent 60%),
+  radial-gradient(circle at 12% 8%, rgba(20,184,166,.16) 0 90px, transparent 91px),
+  repeating-conic-gradient(from 0deg at 50% -10%, rgba(15,118,110,.06) 0deg 6deg, transparent 6deg 18deg),
+  var(--cream)}
+.stage{width:100%;max-width:880px;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;z-index:1}
+/* Checker diner strips */
+.checker{width:100%;max-width:880px;height:14px;flex:none;
+  background:repeating-conic-gradient(var(--ink) 0% 25%, var(--cream) 0% 50%) 0 0/28px 14px;
+  border:3px solid var(--ink);border-radius:999px;box-shadow:var(--shadow-hard-sm)}
+.checker.top{margin-top:14px}
+/* Shared masthead */
+.masthead{width:100%;text-align:center;padding:10px 6px 2px}
+.masthead .eyebrow{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.34em;color:var(--teal);text-transform:uppercase}
+.masthead h1{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(2rem,5.4vw,3rem);line-height:1.05;color:var(--ruby);text-shadow:2px 2px 0 var(--mustard),4px 4px 0 rgba(34,32,28,.9);margin:2px 0 24px}
+.masthead h1 span{color:var(--teal)}
+.masthead .tagline{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.site-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.site-nav a{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;text-decoration:none;color:var(--ink);
+  background:var(--paper2);border:2.5px solid var(--ink);border-radius:999px;padding:5px 14px 3px;box-shadow:var(--shadow-hard-sm);transition:transform .12s ease, box-shadow .12s ease}
+.site-nav a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.site-nav a.current{background:var(--mustard)}
+.site-nav a .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--teal);margin-right:6px;vertical-align:1px}
+.header{text-align:center}
+.header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.02rem,2.2vw,1.46rem);letter-spacing:.09em;color:var(--ink)}
+.header h1::before{content:"★ ★ ★ ";color:var(--coral)}
+.header h1::after{content:" ★ ★ ★";color:var(--coral)}
+.header p{margin-top:2px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.switch-note{font-size:.78rem;color:var(--ink-soft);background:var(--paper2);border:2px dashed var(--teal);border-radius:10px;padding:7px 12px;line-height:1.45;max-width:640px;text-align:center}
+.switch-note b{color:var(--teal-dark)}
+.switch-note a{color:var(--ruby);font-weight:700}
+/* Radio cabinet */
+.radio-stage{display:flex;flex-direction:column;align-items:center;padding:26px 12px 6px;position:relative;width:100%}
+.radio-stage::before{content:"";position:absolute;top:-6px;left:50%;width:560px;max-width:96%;height:560px;transform:translateX(-50%);pointer-events:none;z-index:0;
+  background:repeating-conic-gradient(from -90deg at 50% 42%, rgba(255,197,61,.55) 0deg 7deg, transparent 7deg 16deg);
+  -webkit-mask:radial-gradient(circle at 50% 42%, #000 0 46%, transparent 47%);mask:radial-gradient(circle at 50% 42%, #000 0 46%, transparent 47%);opacity:.5}
+body.radio-on .radio-stage::before{opacity:.85}
+.radio-3d{position:relative;width:100%;max-width:430px;z-index:1}
+.cabinet-front{position:relative;border-radius:18px 18px 10px 10px;padding:16px 14px 12px;
+  background:repeating-linear-gradient(90deg, rgba(255,200,150,.05) 0 2px, transparent 2px 9px),linear-gradient(155deg,#9A4524 0%,#5B2210 45%,#3B1307 100%);
+  border:3px solid var(--ink);
+  box-shadow:var(--shadow-hard), inset 0 2px 3px rgba(255,220,185,.28), inset 0 -4px 10px rgba(0,0,0,.65)}
+.cabinet-crown{position:absolute;top:-13px;left:-3px;right:-3px;height:16px;background:linear-gradient(180deg,#B85A30 0%,#652611 100%);clip-path:polygon(0% 100%,50% 0%,100% 100%);border-bottom:2px solid var(--ink);pointer-events:none}
+.cloth-panel{position:relative;border-radius:10px;background-color:#0F766E;
+  background-image:radial-gradient(circle at 20% 30%, rgba(255,246,222,.22) 0 2px, transparent 3px),radial-gradient(circle at 78% 68%, rgba(255,197,61,.28) 0 2px, transparent 3px),repeating-linear-gradient(45deg, rgba(255,225,175,.12) 0 1.5px, transparent 1.5px 4.5px),repeating-linear-gradient(-45deg, rgba(0,0,0,.22) 0 1.5px, transparent 1.5px 4.5px);
+  border:2.5px solid var(--ink);box-shadow:inset 0 4px 14px rgba(0,0,0,.55)}
+.cloth-upper{padding:26px 34px;display:flex;align-items:center;justify-content:center}
+.roman-num{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:1rem;font-weight:400;color:#FFEEC0;text-shadow:0 1px 3px rgba(0,0,0,.85);line-height:1;user-select:none;letter-spacing:.06em}
+.rn-12{top:6px;left:50%;transform:translateX(-50%)}.rn-1{top:6px;left:74%;transform:translateX(-50%)}.rn-2{top:24%;right:10px}.rn-3{top:50%;right:10px;transform:translateY(-50%)}.rn-4{bottom:22%;right:10px}.rn-5{bottom:6px;left:74%;transform:translateX(-50%)}.rn-6{bottom:6px;left:50%;transform:translateX(-50%)}.rn-7{bottom:6px;left:26%;transform:translateX(-50%)}.rn-8{bottom:22%;left:10px}.rn-9{top:50%;left:10px;transform:translateY(-50%)}.rn-10{top:24%;left:10px}.rn-11{top:6px;left:26%;transform:translateX(-50%)}
+.clock-bezel{position:relative;width:100%;max-width:296px;border-radius:12px;padding:6px;background:linear-gradient(145deg,#2D2924 0%,#6B6258 50%,#1C1916 100%);box-shadow:0 6px 14px rgba(0,0,0,.72), inset 0 1px 2px rgba(255,255,255,.25);border:2px solid var(--ink)}
+.clock-face{position:relative;width:100%;border-radius:8px;padding:6px 10px 8px;background:radial-gradient(circle at 50% 42%,#FFFDF4 0%,#FFEEC0 80%,#F5D9A0 100%);box-shadow:inset 0 2px 10px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:4px;transition:box-shadow .4s ease,background .4s ease}
+body.radio-on .clock-face{background:radial-gradient(circle at 50% 42%,#FFF9E8 0%,#FFE9A8 78%,#FFC53D 100%);box-shadow:inset 0 0 18px rgba(255,194,82,.55),0 0 16px rgba(255,196,86,.4)}
+.face-topbar{display:flex;align-items:center;justify-content:space-between;font-size:.62rem;font-weight:700;letter-spacing:.1em;color:#3A2D1D}
+.status-pill{display:inline-flex;align-items:center;gap:5px;text-transform:uppercase}
+.status-dot{width:9px;height:9px;border-radius:50%;background:#7C2D23;transition:background .3s ease,box-shadow .3s ease}
+.status-dot.tuning{background:#E68A00;box-shadow:0 0 8px #F5B041}
+.status-dot.on-air{background:#E0341A;box-shadow:0 0 10px #FF5733}
+.magic-eye{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#0D1C10 35%,#122916 65%,#060D07 100%);border:1.5px solid #4D3E2B;position:relative;overflow:hidden;transition:box-shadow .4s ease,background .4s ease}
+.magic-eye::after{content:"";position:absolute;inset:2px;border-radius:50%;background:conic-gradient(from 165deg, rgba(8,22,10,.92) 0deg 32deg, transparent 40deg 320deg, rgba(8,22,10,.92) 328deg 360deg);transition:transform .35s ease}
+body.radio-on .magic-eye{background:radial-gradient(circle,#0F2613 24%,#4DFF73 62%,#198C35 100%);box-shadow:0 0 10px rgba(88,255,122,.75)}
+body.radio-tuning .magic-eye::after{transform:scale(1.12)}
+.freq-readout{font-variant-numeric:tabular-nums;color:#5B3112;font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em}
+.clock-svg{width:100%;height:122px;display:block}
+.scale-container{position:relative;padding:4px 6px 2px;border-top:1px solid rgba(55,38,20,.25)}
+.scale-ticks{display:flex;justify-content:space-between;font-size:.6rem;font-weight:700;color:#3D2E1E;padding-bottom:4px;border-bottom:1px solid rgba(55,38,20,.35)}
+.station-markers{position:relative;height:18px;margin-top:2px}
+.station-pip{position:absolute;top:0;transform:translateX(-50%);background:transparent;border:none;color:#5C4630;font-size:.38rem;font-weight:700;letter-spacing:0;text-transform:uppercase;white-space:nowrap;cursor:pointer;padding:1px 1.5px;border-radius:3px}
+.station-pip.active{color:#8F1D0E;background:rgba(143,29,14,.14)}
+.dial-needle{position:absolute;top:1px;bottom:18px;width:2.5px;background:#C82414;box-shadow:0 0 4px rgba(200,36,20,.6);border-radius:2px;transform:translateX(-50%);transition:left .45s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.clock-mini-knob{position:absolute;bottom:-5px;width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F5F2EB 0%,#9B958A 70%,#4D4840 100%);border:1px solid #2B2722;box-shadow:0 2px 4px rgba(0,0,0,.7)}
+.clock-mini-knob.left{left:26px}.clock-mini-knob.right{right:26px}
+.wood-divider{height:10px;margin:7px -4px;border-radius:2px;background:linear-gradient(180deg,#FFC53D 0%,#E9B44C 60%,#8A5A12 100%);border:2px solid var(--ink);box-shadow:0 3px 6px rgba(0,0,0,.65)}
+.cloth-lower{padding:10px 12px 8px;display:flex;flex-direction:column;gap:10px}
+.now-playing{border-radius:10px;padding:9px 11px;background:linear-gradient(180deg,#22201C 0%,#120905 100%);border:2px solid var(--ink);box-shadow:inset 0 2px 8px rgba(0,0,0,.85), 3px 3px 0 rgba(34,32,28,.9);display:flex;flex-direction:column;gap:6px}
+.np-header{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:.6rem}
+.np-band{font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mustard)}
+.np-ep-count{color:#C9B597;font-variant-numeric:tabular-nums}
+.np-title{font-family:'Playfair Display',Georgia,serif;font-size:1.02rem;font-weight:600;color:#FFF2D6;line-height:1.2}
+.np-meta{font-size:.72rem;color:#C9B597;line-height:1.3}
+.np-progress-row{display:flex;align-items:center;gap:8px}
+input[type="range"].seek-bar{flex:1;accent-color:var(--mustard);height:4px;cursor:pointer}
+.np-time{font-size:.62rem;color:#C9B597;font-variant-numeric:tabular-nums;min-width:72px;text-align:right}
+.np-actions{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.ep-nav{display:flex;gap:5px;flex-wrap:wrap}
+.btn-mini{background:#2B1A10;border:1.5px solid #6B4624;color:#FFF6DE;font-size:.65rem;font-weight:600;padding:4px 8px;border-radius:999px;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+.btn-mini:hover{background:#3D2516;border-color:var(--mustard)}
+.btn-mini.active{background:linear-gradient(180deg,#FFE299 0%,#E0AA45 100%);color:#1C1106;border-color:#FFF2CF}
+.archive-link{font-size:.62rem;color:var(--mustard);text-decoration:none}
+.archive-link:hover{text-decoration:underline}
+.band-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.btn-band{padding:6px 3px 5px;border-radius:8px;border:2px solid var(--ink);background:linear-gradient(180deg,#3A2315 0%,#24140B 100%);color:#FFF6DE;font-family:'Bebas Neue',sans-serif;font-size:.88rem;letter-spacing:.07em;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;box-shadow:2px 2px 0 var(--ink)}
+.btn-band span.kc{font-size:.52rem;color:#C9B597;font-family:'Inter',sans-serif;letter-spacing:.04em}
+.btn-band.active{box-shadow:0 0 0 2px #FFF2CF, 2px 2px 0 var(--ink)}
+.btn-band[data-band="comedy"].active{background:linear-gradient(180deg,#FFE299 0%,#FFC53D 100%);color:#22201C}
+.btn-band[data-band="detective"].active{background:linear-gradient(180deg,#5EEAD4 0%,#0F766E 100%);color:#FFFDF4}
+.btn-band[data-band="horror"].active{background:linear-gradient(180deg,#FCA5A5 0%,#991B1B 100%);color:#FFFDF4}
+.btn-band[data-band="western"].active{background:linear-gradient(180deg,#FDBA74 0%,#C2410C 100%);color:#FFFDF4}
+.btn-band[data-band="drama"].active{background:linear-gradient(180deg,#C4A5E8 0%,#7C4DA0 100%);color:#FFFDF4}
+.btn-band[data-band="holiday"].active{background:linear-gradient(180deg,#FF8A7A 0%,#D9382B 100%);color:#FFFDF4}
+.btn-band[data-band="bigband"].active{background:linear-gradient(180deg,#FDE68A 0%,#D97706 100%);color:#22201C}
+.btn-band[data-band="scifi"].active{background:linear-gradient(180deg,#9EDCFF 0%,#2D9CDB 100%);color:#10201E}
+.btn-band[data-band="history"].active{background:linear-gradient(180deg,#86EFAC 0%,#15803D 100%);color:#FFFDF4}
+.btn-band.active span.kc{color:inherit;opacity:.85}
+.knobs-power-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin-top:2px}
+.knob-col{display:flex;flex-direction:column;align-items:center;gap:4px}
+.philco-knob-unit{position:relative;width:80px;height:80px;display:flex;align-items:center;justify-content:center}
+.arc-svg{position:absolute;inset:-8px;width:96px;height:96px;pointer-events:none}
+.arc-label{fill:#FFEEC0;font-family:'Bebas Neue',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px}
+.philco-knob{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4B1B0C 0%,#240B04 72%,#130502 100%);border:2.5px solid var(--ink);box-shadow:0 5px 10px rgba(0,0,0,.78), inset 0 1px 3px rgba(255,200,150,.22);position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.philco-knob:hover{border-color:var(--mustard)}
+.philco-knob-center{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE299 0%,#E9B44C 65%,#8A5A12 100%);border:1.5px solid #FFF2CF;position:relative}
+.philco-knob-notch{position:absolute;top:2px;left:50%;width:2.5px;height:8px;margin-left:-1.25px;background:#2B1006;border-radius:2px;transform-origin:50% 10px}
+.vol-mini-row{display:flex;align-items:center;gap:5px;width:106px}
+input[type="range"].vol-slider{width:100%;accent-color:var(--teal);height:4px;cursor:pointer}
+.vol-pct{font-size:.58rem;font-weight:700;color:#FFEEC0;min-width:28px;text-align:right;font-variant-numeric:tabular-nums}
+.power-center{display:flex;flex-direction:column;align-items:center;gap:6px}
+.toggle-switch{width:32px;height:44px;border-radius:8px;background:linear-gradient(180deg,#4B3822 0%,#24190E 100%);border:2px solid var(--ink);padding:3px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:space-between;position:relative;box-shadow:2px 2px 0 var(--ink)}
+.toggle-text{font-size:.44rem;font-weight:700;color:#C9B597;z-index:1}
+.toggle-bat{position:absolute;left:4px;right:4px;height:17px;border-radius:4px;background:linear-gradient(180deg,#FFE299 0%,#E9B44C 100%);bottom:3px;transition:transform .2s ease}
+.toggle-switch[aria-pressed="true"] .toggle-bat{transform:translateY(-17px)}
+.btn-listen{background:linear-gradient(180deg,#FFE299 0%,#FFC53D 100%);color:#22201C;border:2.5px solid var(--ink);font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.1em;padding:5px 14px 3px;border-radius:999px;cursor:pointer;box-shadow:var(--shadow-hard-sm);min-width:84px}
+.btn-listen:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.tune-hint{font-size:.56rem;font-weight:700;letter-spacing:.08em;color:#FFEEC0;text-transform:uppercase}
+.cabinet-brand{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.34em;color:#FFEEC0;text-shadow:0 1px 3px rgba(0,0,0,.85);margin-top:-2px}
+.base-1{width:calc(100% + 16px);height:11px;margin:-2px 0 0 -8px;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#8B3B1F 0%,#531E0D 100%);border:2px solid var(--ink);box-shadow:0 4px 8px rgba(0,0,0,.7)}
+.base-2{width:calc(100% + 28px);height:13px;margin:0 0 0 -14px;border-radius:4px 4px 6px 6px;background:linear-gradient(180deg,#14B8A6 0%,#0A4F4A 100%);border:2px solid var(--ink);box-shadow:0 10px 18px rgba(0,0,0,.85)}
+.table-shadow{width:92%;max-width:440px;height:22px;margin-top:-6px;border-radius:50%;background:radial-gradient(ellipse at center, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 72%);pointer-events:none}
+.footer{text-align:center;font-size:.7rem;color:var(--ink-soft);line-height:1.55;max-width:640px}
+.footer-credit{margin-top:3px;font-size:.66rem;opacity:.9}
+.footer a{color:var(--teal);font-weight:700;text-decoration:none}
+.genre-legend{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:640px}
+.genre-legend span{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.1em;border:2px solid var(--ink);border-radius:999px;padding:3px 10px 1px;background:var(--paper2);box-shadow:2px 2px 0 var(--ink)}
+.genre-legend span i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;font-style:normal}
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(34,32,28,.82);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
+.modal-backdrop.open{display:flex}
+.modal-card{width:100%;max-width:680px;max-height:86vh;border-radius:16px;background:var(--paper2);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:flex;flex-direction:column;overflow:hidden;color:var(--ink)}
+.modal-header{padding:14px 18px;border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--mustard)}
+.modal-title{font-family:'Pacifico',cursive;font-weight:400;font-size:1.25rem;color:var(--ink)}
+.modal-close{background:var(--paper2);border:2px solid var(--ink);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:700;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.modal-controls{padding:12px 18px;border-bottom:2px solid rgba(34,32,28,.2);display:flex;flex-direction:column;gap:10px;background:rgba(15,118,110,.08)}
+.modal-search-row{display:grid;grid-template-columns:1fr auto;gap:8px}
+.modal-input,.modal-select{background:#FFFDF4;border:2px solid var(--ink);color:var(--ink);border-radius:8px;padding:7px 10px;font-size:.8rem;font-family:inherit}
+.modal-input:focus,.modal-select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-bright)}
+.modal-filter-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.pill-row{display:flex;gap:5px;flex-wrap:wrap}
+.filter-pill{background:var(--paper2);border:2px solid var(--ink);color:var(--ink-soft);font-size:.68rem;font-weight:700;padding:4px 9px;border-radius:999px;cursor:pointer}
+.filter-pill.active{background:var(--ink);color:var(--cream)}
+.catalog-status{font-size:.68rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.modal-list{flex:1;overflow-y:auto;padding:8px 12px 14px;display:flex;flex-direction:column;gap:5px}
+.catalog-item{width:100%;text-align:left;background:rgba(15,118,110,.05);border:2px solid rgba(34,32,28,.18);border-radius:10px;padding:8px 11px;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background .15s ease,border-color .15s ease}
+.catalog-item:hover{background:rgba(255,197,61,.28);border-color:var(--ink)}
+.catalog-item.current{background:rgba(255,197,61,.4);border-color:var(--ink)}
+.ci-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ci-title{font-size:.82rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-sub{font-size:.7rem;color:var(--ink-soft)}
+.ci-badge{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--mustard);border:1.5px solid var(--ink);padding:3px 7px;border-radius:999px;flex-shrink:0}
+.catalog-empty{padding:28px 12px;text-align:center;font-size:.82rem;color:var(--ink-soft)}
+@media (min-width:760px){
+  .radio-3d{max-width:820px}
+  .cabinet-front{display:grid;grid-template-columns:.92fr 10px 1.15fr;gap:12px;align-items:stretch;padding:18px}
+  .cloth-upper{padding:28px 34px}
+  .wood-divider{width:10px;height:auto;margin:-4px 0;background:linear-gradient(90deg,#FFC53D 0%,#E9B44C 60%,#8A5A12 100%);border-top:none;border-left:2px solid var(--ink)}
+  .cloth-lower{justify-content:space-between;padding:12px 14px 10px}
+  .table-shadow{max-width:820px}
+}
+@media (max-width:520px){.band-buttons{grid-template-columns:repeat(3,1fr)}.modal-search-row{grid-template-columns:1fr}}
+
+  </style>
+</head>
+<body>
+  <div class="checker top" aria-hidden="true"></div>
+<div class="masthead">
+  <div class="eyebrow">Free Play &middot; Public Domain</div>
+  <h1>Golden Age <span>Radio</span></h1>
+  <div class="tagline">Comedy &middot; Detective &middot; Horror &middot; Western &middot; Drama &middot; Holiday &middot; Big Band &middot; Sci-Fi &middot; History</div>
+  <nav class="site-nav" aria-label="Golden Age Radio pages">
+    <a href="index.html">Home</a>
+    <a href="mantel.html" class="current"><span class="dot"></span>Mantel Radio</a>
+    <a href="jukebox.html">Jukebox</a>
+  </nav>
+</div>
+  <main class="stage">
+    <header class="header">
+      <h1>The Living Room Dial &middot; Preserving the Evening Broadcast</h1>
+      <p>Classic Broadcasts Preserved by the Internet Archive</p>
+    </header>
+    <!--
+	<p class="switch-note"><b>Same shows, different machine.</b> This mantel radio and the <a href="#" data-site-page="jukebox">diner jukebox</a> play the exact same broadcasts from the same archive &mdash; pick the one you like looking at. Tune by station, or hit <b>Browse Catalog</b> to search everything.</p>
+	-->
+
+    <section class="radio-stage" aria-label="1950s Mantel Clock-Radio">
+      <div class="radio-3d">
+        <div class="cabinet-front">
+          <div class="cabinet-crown" aria-hidden="true"></div>
+
+          <!-- UPPER PANEL: Roman Numerals + Integrated Clock & AM Dial -->
+          <div class="cloth-panel cloth-upper">
+            <span class="roman-num rn-12">XII</span>
+            <span class="roman-num rn-1">I</span>
+            <span class="roman-num rn-2">II</span>
+            <span class="roman-num rn-3">III</span>
+            <span class="roman-num rn-4">IV</span>
+            <span class="roman-num rn-5">V</span>
+            <span class="roman-num rn-6">VI</span>
+            <span class="roman-num rn-7">VII</span>
+            <span class="roman-num rn-8">VIII</span>
+            <span class="roman-num rn-9">IX</span>
+            <span class="roman-num rn-10">X</span>
+            <span class="roman-num rn-11">XI</span>
+
+            <div class="clock-bezel">
+              <div class="clock-face">
+                <div class="face-topbar">
+                  <div class="status-pill">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">STANDBY</span>
+                  </div>
+                  <div class="magic-eye" id="magicEye" title="6E5 Magic-Eye Tuning Indicator"></div>
+                  <div class="freq-readout" id="freqReadout">600 KC</div>
+                </div>
+
+                <svg class="clock-svg" viewBox="0 0 180 122" aria-label="Live analog clock">
+                  <g id="clockTicks" stroke="#221d18" stroke-linecap="round"></g>
+                  <g id="hourHand" transform="rotate(0 90 61)">
+                    <path d="M90 65 L86.5 50 L90 27 L93.5 50 Z" fill="#181512" />
+                    <circle cx="90" cy="43" r="2.2" fill="#efe8d8" />
+                  </g>
+                  <g id="minuteHand" transform="rotate(0 90 61)">
+                    <path d="M90 67 L87.4 46 L90 15 L92.6 46 Z" fill="#181512" />
+                  </g>
+                  <g id="secondHand" transform="rotate(0 90 61)">
+                    <line x1="90" y1="73" x2="90" y2="13" stroke="#c8281c" stroke-width="1.5" stroke-linecap="round" />
+                  </g>
+                  <circle cx="90" cy="61" r="4.5" fill="#181512" />
+                  <circle cx="90" cy="61" r="1.8" fill="#c8281c" />
+                </svg>
+
+                <div class="scale-container">
+                  <div class="dial-needle" id="dialNeedle" style="left: 10%;"></div>
+                  <div class="scale-ticks">
+                    <span>55</span>
+                    <span>70</span>
+                    <span>90</span>
+                    <span>110</span>
+                    <span>130</span>
+                    <span>160</span>
+                  </div>
+                  <div class="station-markers">
+                    <button type="button" class="station-pip active" data-band="comedy" style="left: 9%;">Com</button>
+                    <button type="button" class="station-pip" data-band="detective" style="left: 20%;">Det</button>
+                    <button type="button" class="station-pip" data-band="horror" style="left: 31%;">Hor</button>
+                    <button type="button" class="station-pip" data-band="western" style="left: 42%;">West</button>
+                    <button type="button" class="station-pip" data-band="drama" style="left: 53%;">Dra</button>
+                    <button type="button" class="station-pip" data-band="holiday" style="left: 65%;">Hol</button>
+                    <button type="button" class="station-pip" data-band="bigband" style="left: 76%;">Band</button>
+                    <button type="button" class="station-pip" data-band="scifi" style="left: 86%;">Sci</button>
+                    <button type="button" class="station-pip" data-band="history" style="left: 95%;">Hist</button>
+                  </div>
+                </div>
+              </div>
+              <div class="clock-mini-knob left" aria-hidden="true"></div>
+              <div class="clock-mini-knob right" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="wood-divider" aria-hidden="true"></div>
+
+          <!-- LOWER PANEL: Broadcast Readout + Presets + Knobs -->
+          <div class="cloth-panel cloth-lower">
+            <div class="now-playing">
+              <div class="np-header">
+                <span class="np-band" id="npBand">COMEDY &middot; 600 KC</span>
+                <span class="np-ep-count" id="npCount">Episode 1 of 5</span>
+              </div>
+              <div class="np-title" id="npTitle">Ready to tune in</div>
+              <div class="np-meta" id="npMeta">Press Tune in to play Fibber McGee and Molly — Visiting Aunt (May 2, 1944).</div>
+              <div class="np-progress-row">
+                <input type="range" class="seek-bar" id="seekBar" min="0" max="100" value="0" aria-label="Episode playback position" />
+                <span class="np-time" id="npTime">00:00 / --:--</span>
+              </div>
+              <div class="np-actions">
+                <div class="ep-nav">
+                  <button type="button" class="btn-mini" id="prevEpBtn">&lsaquo; Prev</button>
+                  <button type="button" class="btn-mini" id="nextEpBtn">Next &rsaquo;</button>
+                  <button type="button" class="btn-mini" id="shuffleBtn" aria-pressed="false" title="Shuffle episodes while keeping multi-part stories in order">Shuffle: Off</button>
+                  <button type="button" class="btn-mini" id="catalogBtn">Browse Catalog</button>
+                </div>
+                <a class="archive-link" id="archiveLink" href="https://archive.org/details/otr_fibbermcgeeandmolly" target="_blank" rel="noopener noreferrer">Archive &nearr;</a>
+              </div>
+            </div>
+
+            <div class="band-buttons">
+              <button type="button" class="btn-band active" data-band="comedy"><span>Comedy</span><span class="kc">600 KC</span></button>
+              <button type="button" class="btn-band" data-band="detective"><span>Detective</span><span class="kc">720 KC</span></button>
+              <button type="button" class="btn-band" data-band="horror"><span>Horror</span><span class="kc">840 KC</span></button>
+              <button type="button" class="btn-band" data-band="western"><span>Western</span><span class="kc">960 KC</span></button>
+              <button type="button" class="btn-band" data-band="drama"><span>Drama</span><span class="kc">1080 KC</span></button>
+              <button type="button" class="btn-band" data-band="holiday"><span>Holiday</span><span class="kc">1225 KC</span></button>
+              <button type="button" class="btn-band" data-band="bigband"><span>Big Band</span><span class="kc">1340 KC</span></button>
+              <button type="button" class="btn-band" data-band="scifi"><span>Sci-Fi</span><span class="kc">1460 KC</span></button>
+              <button type="button" class="btn-band" data-band="history"><span>History</span><span class="kc">1580 KC</span></button>
+            </div>
+
+            <div class="knobs-power-row">
+              <div class="knob-col">
+                <div class="philco-knob-unit">
+                  <svg class="arc-svg" viewBox="0 0 96 96" aria-hidden="true">
+                    <defs>
+                      <path id="volArc" d="M 14,52 A 34,34 0 0,1 82,52" />
+                    </defs>
+                    <text class="arc-label">
+                      <textPath href="#volArc" startOffset="50%" text-anchor="middle">VOLUME</textPath>
+                    </text>
+                  </svg>
+                  <button type="button" class="philco-knob" id="volKnobBtn" title="Click to step volume">
+                    <div class="philco-knob-center">
+                      <div class="philco-knob-notch" id="volKnobPointer"></div>
+                    </div>
+                  </button>
+                </div>
+                <div class="vol-mini-row">
+                  <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="72" aria-label="Radio volume" />
+                  <span class="vol-pct" id="volPct">72%</span>
+                </div>
+              </div>
+
+              <div class="power-center">
+                <button type="button" class="toggle-switch" id="powerSwitch" aria-pressed="false" aria-label="Radio power switch">
+                  <span class="toggle-text">ON</span>
+                  <span class="toggle-bat"></span>
+                  <span class="toggle-text">OFF</span>
+                </button>
+                <button type="button" class="btn-listen" id="listenBtn">Tune in</button>
+              </div>
+
+              <div class="knob-col">
+                <div class="philco-knob-unit">
+                  <svg class="arc-svg" viewBox="0 0 96 96" aria-hidden="true">
+                    <defs>
+                      <path id="tuneArc" d="M 12,52 A 36,36 0 0,1 84,52" />
+                    </defs>
+                    <text class="arc-label" style="letter-spacing: 2.6px;">
+                      <textPath href="#tuneArc" startOffset="50%" text-anchor="middle">5 6 7 9 11 14 16</textPath>
+                    </text>
+                  </svg>
+                  <button type="button" class="philco-knob" id="tuneKnobBtn" title="Click to cycle radio band">
+                    <div class="philco-knob-center">
+                      <div class="philco-knob-notch" id="tuneKnobPointer"></div>
+                    </div>
+                  </button>
+                </div>
+                <span class="tune-hint" id="bandHint">9 PRESETS</span>
+              </div>
+            </div>
+
+            <div class="cabinet-brand">GOLDEN AGE</div>
+          </div>
+        </div>
+
+        <div class="base-1" aria-hidden="true"></div>
+        <div class="base-2" aria-hidden="true"></div>
+      </div>
+      <div class="table-shadow" aria-hidden="true"></div>
+    </section>
+
+    <div class="genre-legend" aria-label="Station colours">
+      <span><i style="background:#FFC53D"></i>Comedy</span>
+      <span><i style="background:#0F766E"></i>Detective</span>
+      <span><i style="background:#991B1B"></i>Horror</span>
+      <span><i style="background:#C2410C"></i>Western</span>
+      <span><i style="background:#7C4DA0"></i>Drama</span>
+      <span><i style="background:#D9382B"></i>Holiday</span>
+      <span><i style="background:#D97706"></i>Big Band</span>
+      <span><i style="background:#2D9CDB"></i>Sci-Fi</span>
+      <span><i style="background:#15803D"></i>History</span>
+    </div>
+    <footer class="footer">
+      <div>Public-domain Old Time Radio broadcasts streamed via the <a href="https://archive.org/details/oldtimeradio" target="_blank" rel="noopener noreferrer">Internet Archive</a>.</div>
+      <div class="footer-credit">Created by Ed Johnson with a Gemini AI assist. &middot; MIT License &middot; November 2026</div>
+    </footer>
+  </main>
+
+  <!-- Catalog Search & Filter Modal -->
+  <div class="modal-backdrop" id="catalogModal" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="catalogModalTitle">Old Time Radio Catalog</h2>
+        <button type="button" class="modal-close" id="closeCatalogBtn">Close &times;</button>
+      </div>
+      <div class="modal-controls">
+        <div class="modal-search-row">
+          <input type="search" class="modal-input" id="catalogSearch" placeholder="Search by show, episode title, or year..." aria-label="Search episodes" />
+          <select class="modal-select" id="showFilter" aria-label="Filter by show">
+            <option value="all">All Shows</option>
+          </select>
+        </div>
+        <div class="modal-filter-pills">
+          <div class="pill-row" id="bandFilterPills">
+            <button type="button" class="filter-pill active" data-filter-band="all">All Bands</button>
+            <button type="button" class="filter-pill" data-filter-band="comedy">Comedy</button>
+            <button type="button" class="filter-pill" data-filter-band="detective">Detective</button>
+            <button type="button" class="filter-pill" data-filter-band="horror">Horror</button>
+            <button type="button" class="filter-pill" data-filter-band="western">Western</button>
+            <button type="button" class="filter-pill" data-filter-band="drama">Drama</button>
+            <button type="button" class="filter-pill" data-filter-band="holiday">Holiday</button>
+            <button type="button" class="filter-pill" data-filter-band="bigband">Big Band</button>
+            <button type="button" class="filter-pill" data-filter-band="scifi">Sci-Fi</button>
+            <button type="button" class="filter-pill" data-filter-band="history">History</button>
+          </div>
+          <span class="catalog-status" id="catalogStatus">Loading Archive catalog...</span>
+        </div>
+      </div>
+      <div class="modal-list" id="catalogList"></div>
+    </div>
+  </div>
+
+  <audio id="radioAudio" preload="none"></audio>
+
+  <script>
+    (function () {
+      const BAND_ORDER = ["comedy", "detective", "horror", "western", "drama", "holiday", "bigband", "scifi", "history"];
+
+      const COLLECTIONS = {
+        comedy: [
+          { id: "otr_fibbermcgeeandmolly", show: "Fibber McGee and Molly" },
+          { id: "OTRR_Jack_Benny_Singles_1944-1945", show: "The Jack Benny Program" },
+          { id: "OTRR_Mel_Blanc_Singles", show: "The Mel Blanc Show" }
+        ],
+        detective: [
+          { id: "OTRR_Dragnet_Singles", show: "Dragnet" },
+          { id: "OTRR_YoursTrulyJohnnyDollar_Singles_Edmond_OBrien", show: "Yours Truly, Johnny Dollar" }
+        ],
+        horror: [
+          { id: "OTRR_Sealed_Book_Singles", show: "The Sealed Book" },
+          { id: "OTRR_Inner_Sanctum_Mysteries_Singles", show: "Inner Sanctum Mysteries" },
+          { id: "OTRR_Weird_Circle_Singles", show: "The Weird Circle" },
+          { id: "creeps-by-night", show: "Creeps by Night" }
+        ],
+        western: [
+          { id: "FrontierGentlemanHQ", show: "Frontier Gentleman" },
+          { id: "OTRR_Escape_Singles", show: "Escape" }
+        ],
+        drama: [
+          { id: "OTRR_Suspense_Singles_By_Year_1948", show: "Suspense (1948)" },
+          { id: "OTRR_Suspense_Singles_By_Year_1950", show: "Suspense (1950)" },
+          { id: "OTRR_Gunsmoke_Singles", show: "Gunsmoke" }
+        ],
+        holiday: [
+          { id: "oldfashionedchri00symp", show: "An Old Fashioned Christmas" },
+          { id: "500OTRChristmasShows", show: "500 OTR Christmas Shows" }
+        ],
+        bigband: [
+          { id: "BigBandRemotes", show: "Big Band Remotes" }
+        ],
+        scifi: [
+          { id: "XMinus1_A", show: "X Minus One" },
+          { id: "Dimension-X", show: "Dimension X" }
+        ],
+        history: [
+          { id: "You_Are_There_OTR", show: "You Are There" },
+          { id: "OTRR_American_History_Singles", show: "American History Radio" },
+          { id: "OTRR_Stroke_of_Fate_Singles", show: "Stroke of Fate" }
+        ]
+      };
+
+      const STATIONS = {
+        comedy: {
+          label: "COMEDY",
+          freq: 600,
+          needlePct: 9,
+          knobDeg: -95,
+          episodes: [
+            { show: "Fibber McGee and Molly", title: "Visiting Aunt", date: "1944-05-02", url: "https://archive.org/download/otr_fibbermcgeeandmolly/440502_Aunt.mp3", sourceUrl: "https://archive.org/details/otr_fibbermcgeeandmolly" },
+            { show: "Fibber McGee and Molly", title: "Too Much Energy", date: "1945-01-23", url: "https://archive.org/download/otr_fibbermcgeeandmolly/450123_TooMuchEnergy.mp3", sourceUrl: "https://archive.org/details/otr_fibbermcgeeandmolly" },
+            { show: "Fibber McGee and Molly", title: "Shrimps", date: "1947-05-27", url: "https://archive.org/download/otr_fibbermcgeeandmolly/470527_Shrimps.mp3", sourceUrl: "https://archive.org/details/otr_fibbermcgeeandmolly" },
+            { show: "Fibber McGee and Molly", title: "Rummage Sale", date: "1952-01-15", url: "https://archive.org/download/otr_fibbermcgeeandmolly/FibberMcGeeAndMolly_520115_RummageSale.mp3", sourceUrl: "https://archive.org/details/otr_fibbermcgeeandmolly" },
+            { show: "The Jack Benny Program", title: "1st Train Station and Vault", date: "1945-01-07", url: "https://archive.org/download/OTRR_Jack_Benny_Singles_1944-1945/JB%201945-01-07%201st%20Train%20Station%20and%20Vault.ogg", sourceUrl: "https://archive.org/details/OTRR_Jack_Benny_Singles_1944-1945" }
+          ]
+        },
+        detective: {
+          label: "DETECTIVE",
+          freq: 720,
+          needlePct: 20,
+          knobDeg: -70,
+          episodes: [
+            { show: "Dragnet", title: "Red Light Bandit", date: "1949-07-14", url: "https://archive.org/download/OTRR_Dragnet_Singles/Dragnet_49-07-14_006_Red_Light_Bandit.mp3", sourceUrl: "https://archive.org/details/OTRR_Dragnet_Singles" },
+            { show: "Dragnet", title: "Attempted City Hall Bombing", date: "1949-07-21", url: "https://archive.org/download/OTRR_Dragnet_Singles/Dragnet_49-07-21_007_Attempted_City_Hall_Bombing.mp3", sourceUrl: "https://archive.org/details/OTRR_Dragnet_Singles" },
+            { show: "Dragnet", title: "The Big Kill", date: "1950-03-02", url: "https://archive.org/download/OTRR_Dragnet_Singles/Dragnet_50-03-02_038_The_Big_Kill.mp3", sourceUrl: "https://archive.org/details/OTRR_Dragnet_Singles" },
+            { show: "Yours Truly, Johnny Dollar", title: "The Caligio Diamond Matter", date: "1950-06-08", url: "https://archive.org/download/OTRR_YoursTrulyJohnnyDollar_Singles_Edmond_OBrien/500608%20052%20The%20Caligio%20Diamond%20Matter.mp3", sourceUrl: "https://archive.org/details/OTRR_YoursTrulyJohnnyDollar_Singles_Edmond_OBrien" },
+            { show: "Yours Truly, Johnny Dollar", title: "The London Matter", date: "1950-06-22", url: "https://archive.org/download/OTRR_YoursTrulyJohnnyDollar_Singles_Edmond_OBrien/500622%20054%20The%20London%20Matter.mp3", sourceUrl: "https://archive.org/details/OTRR_YoursTrulyJohnnyDollar_Singles_Edmond_OBrien" }
+          ]
+        },
+        horror: {
+          label: "HORROR & SUPERNATURAL",
+          freq: 840,
+          needlePct: 31,
+          knobDeg: -45,
+          episodes: [
+            { show: "The Sealed Book", title: "The Hands of Death", date: "1945", url: "https://archive.org/download/OTRR_Sealed_Book_Singles/Sealed_Book_45-xx-xx_ep01_The_Hands_of_Death.mp3", sourceUrl: "https://archive.org/details/OTRR_Sealed_Book_Singles" },
+            { show: "The Sealed Book", title: "King of the World", date: "1945", url: "https://archive.org/download/OTRR_Sealed_Book_Singles/Sealed_Book_45-xx-xx_ep02_King_of_the_World.mp3", sourceUrl: "https://archive.org/details/OTRR_Sealed_Book_Singles" },
+            { show: "The Sealed Book", title: "The Ghost Maker", date: "1945", url: "https://archive.org/download/OTRR_Sealed_Book_Singles/Sealed_Book_45-xx-xx_ep13_The_Ghost_Maker.mp3", sourceUrl: "https://archive.org/details/OTRR_Sealed_Book_Singles" }
+          ]
+        },
+        western: {
+          label: "WESTERNS & ADVENTURE",
+          freq: 960,
+          needlePct: 42,
+          knobDeg: -20,
+          episodes: [
+            { show: "Frontier Gentleman", title: "Shelton Brothers", date: "1958-02-02", url: "https://archive.org/download/FrontierGentlemanHQ/01-SheltonBrothers%5B1958-02-02%5D.ogg", sourceUrl: "https://archive.org/details/FrontierGentlemanHQ" },
+            { show: "Frontier Gentleman", title: "Charlie Meeker", date: "1958-02-09", url: "https://archive.org/download/FrontierGentlemanHQ/02-CharlieMeeker%5B1958-02-09%5D.ogg", sourceUrl: "https://archive.org/details/FrontierGentlemanHQ" },
+            { show: "Frontier Gentleman", title: "The Lost Mine", date: "1958-03-02", url: "https://archive.org/download/FrontierGentlemanHQ/05-TheLostMine%5B1958-03-02%5D.ogg", sourceUrl: "https://archive.org/details/FrontierGentlemanHQ" }
+          ]
+        },
+        drama: {
+          label: "DRAMA",
+          freq: 1080,
+          needlePct: 53,
+          knobDeg: 5,
+          episodes: [
+            { show: "Suspense", title: "The Singing Walls (Van Johnson)", date: "1944-11-02", url: "https://archive.org/download/TSP441102/Suspense%201944-11-02%20The%20Singing%20Walls%20NETWORK%20(dirID).mp3", sourceUrl: "https://archive.org/details/TSP441102" },
+            { show: "Suspense (1948)", title: "Donovan's Brain", date: "1948-02-07", url: "https://archive.org/download/OTRR_Suspense_Singles_By_Year_1948/Suspense%20480207%20283%20Donovan's%20Brain%20(128-44).mp3", sourceUrl: "https://archive.org/details/OTRR_Suspense_Singles_By_Year_1948" },
+            { show: "Suspense (1948)", title: "Sorry, Wrong Number", date: "1948-11-18", url: "https://archive.org/download/OTRR_Suspense_Singles_By_Year_1948/Suspense%20481118%20315%20Sorry%2C%20Wrong%20Number%20(128-44).mp3", sourceUrl: "https://archive.org/details/OTRR_Suspense_Singles_By_Year_1948" },
+            { show: "Suspense (1948)", title: "The Hands of Mr. Ottermole", date: "1948-12-02", url: "https://archive.org/download/OTRR_Suspense_Singles_By_Year_1948/Suspense%20481202%20317%20The%20Hands%20of%20Mr%20Ottermole%20(128-44).mp3", sourceUrl: "https://archive.org/details/OTRR_Suspense_Singles_By_Year_1948" }
+          ]
+        },
+        holiday: {
+          label: "HOLIDAY MUSIC",
+          freq: 1225,
+          needlePct: 65,
+          knobDeg: 30,
+          episodes: [
+            { show: "Leroy Anderson", title: "Sleigh Ride", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/01_Sleigh_ride__Leroy_Anderson_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Mel Torme", title: "The Christmas Song", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/02_The_Christmas_song__Mel_Torme_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Bing Crosby", title: "I Heard the Bells on Christmas Day", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/09_I_heard_the_bells_on_Christmas_day__Bing_Crosby_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Sammy Kaye", title: "It's Beginning to Look Like Christmas", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/05_It_s_beginning_to_look_like_Christmas__Sammy_Kaye_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Wayne King", title: "Silver Bells", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/06_Silver_bells__Wayne_King_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Lawrence Welk", title: "Santa Claus Is Coming to Town", date: "Vintage Holiday", url: "https://archive.org/download/oldfashionedchri00symp/10_Santa_Claus_is_coming_to_town__Lawrence_Welk_.ogg", sourceUrl: "https://archive.org/details/oldfashionedchri00symp" },
+            { show: "Fibber McGee and Molly", title: "Mailing Christmas Packages", date: "1940-12-10", url: "https://archive.org/download/otr_fibbermcgeeandmolly/Fibber_McGee__Molly_-_1940.12.10_Mailing_Christmas_Packages.mp3", sourceUrl: "https://archive.org/details/otr_fibbermcgeeandmolly" }
+          ]
+        },
+        bigband: {
+          label: "BIG BAND & SWING",
+          freq: 1340,
+          needlePct: 76,
+          knobDeg: 55,
+          episodes: [
+            { show: "Big Band Remotes", title: "Benny Goodman — Camel Caravan", date: "1937-08-31", url: "https://archive.org/download/BigBandRemotes/CamelCaravan_1937-08-31_wBennyGoodman.mp3", sourceUrl: "https://archive.org/details/BigBandRemotes" },
+            { show: "Big Band Remotes", title: "Count Basie — From Birdland", date: "1953-01-01", url: "https://archive.org/download/BigBandRemotes/Remote-CountBasie_1953-01-01_From_Birdland.mp3", sourceUrl: "https://archive.org/details/BigBandRemotes" },
+            { show: "Big Band Remotes", title: "Duke Ellington — From Fargo, ND", date: "1940-11-07", url: "https://archive.org/download/BigBandRemotes/Remote-DukeEllington_1940-11-07_From_Fargo_NorthDakota.mp3", sourceUrl: "https://archive.org/details/BigBandRemotes" },
+            { show: "Big Band Remotes", title: "Ella Fitzgerald — I Got Rhythm", date: "1940-03-04", url: "https://archive.org/download/BigBandRemotes/Remote-EllaFitzgerald_1940-03-04_I_Got_Rythmn.mp3", sourceUrl: "https://archive.org/details/BigBandRemotes" }
+          ]
+        },
+        scifi: {
+          label: "SCIENCE FICTION",
+          freq: 1460,
+          needlePct: 86,
+          knobDeg: 80,
+          episodes: [
+            { show: "X Minus One", title: "Mars Is Heaven", date: "1955-05-08", url: "https://archive.org/download/XMinus1_A/xminusone_550508_MarsIsHeaven.mp3", sourceUrl: "https://archive.org/details/XMinus1_A" },
+            { show: "X Minus One", title: "The Green Hills of Earth", date: "1955-07-07", url: "https://archive.org/download/XMinus1_A/xminusone_550707_TheGreenHillsOfEarth.mp3", sourceUrl: "https://archive.org/details/XMinus1_A" },
+            { show: "X Minus One", title: "The Veldt", date: "1955-08-04", url: "https://archive.org/download/XMinus1_A/xminusone_550804_TheVeldt.mp3", sourceUrl: "https://archive.org/details/XMinus1_A" },
+            { show: "X Minus One", title: "The Cold Equations", date: "1955-08-25", url: "https://archive.org/download/XMinus1_A/xminusone_550825_ColdEquations.mp3", sourceUrl: "https://archive.org/details/XMinus1_A" },
+            { show: "Dimension X", title: "A Logic Named Joe", date: "1950-07-01", url: "https://archive.org/download/Dimension-X/Dimx_e013_ALogicNamedJoe.mp3", sourceUrl: "https://archive.org/details/Dimension-X" },
+            { show: "Dimension X", title: "First Contact", date: "1950-09-08", url: "https://archive.org/download/Dimension-X/Dimx_e023_FirstContact.mp3", sourceUrl: "https://archive.org/details/Dimension-X" }
+          ]
+        },
+        history: {
+          label: "HISTORY",
+          freq: 1580,
+          needlePct: 95,
+          knobDeg: 105,
+          episodes: [
+            { show: "You Are There", title: "Assassination of Abraham Lincoln", date: "1947-07-07", url: "https://archive.org/download/You_Are_There_OTR/You_Are_There_470707_ep01_Assassination_of_Abraham_Lincoln.mp3", sourceUrl: "https://archive.org/details/You_Are_There_OTR" },
+            { show: "You Are There", title: "The Storming of the Bastille", date: "1947-07-14", url: "https://archive.org/download/You_Are_There_OTR/You_Are_There_470714_ep02_The_Storming_of_the_Bastille.mp3", sourceUrl: "https://archive.org/details/You_Are_There_OTR" },
+            { show: "You Are There", title: "Columbus Discovers America", date: "1947-07-28", url: "https://archive.org/download/You_Are_There_OTR/You_Are_There_470728_ep03_Columbus_Discovers_America.mp3", sourceUrl: "https://archive.org/details/You_Are_There_OTR" },
+            { show: "You Are There", title: "The Alamo", date: "1947-08-18", url: "https://archive.org/download/You_Are_There_OTR/You_Are_There_470818_ep06_The_Alamo.mp3", sourceUrl: "https://archive.org/details/You_Are_There_OTR" }
+          ]
+        }
+      };
+
+      const state = {
+        isOn: false,
+        hasStartedOnce: false,
+        band: "comedy",
+        episodeIdx: { comedy: 0, detective: 0, horror: 0, western: 0, drama: 0, holiday: 0, bigband: 0, scifi: 0, history: 0 },
+        shuffleOn: false,
+        playOrder: { comedy: null, detective: null, horror: null, western: null, drama: null, holiday: null, bigband: null, scifi: null, history: null },
+        volume: 72,
+        status: "standby",
+        catalogLoaded: 0,
+        catalogTotal: 0,
+        modalFilterBand: "all"
+      };
+
+      try {
+        const saved = JSON.parse(localStorage.getItem("golden_age_radio_v2") || "null");
+        if (saved) {
+          if (saved.band && STATIONS[saved.band]) state.band = saved.band;
+          if (typeof saved.volume === "number") state.volume = Math.max(0, Math.min(100, saved.volume));
+          if (typeof saved.shuffleOn === "boolean") state.shuffleOn = saved.shuffleOn;
+        }
+      } catch (_) {}
+
+      const audio = document.getElementById("radioAudio");
+      const statusDot = document.getElementById("statusDot");
+      const statusText = document.getElementById("statusText");
+      const freqReadout = document.getElementById("freqReadout");
+      const dialNeedle = document.getElementById("dialNeedle");
+      const npBand = document.getElementById("npBand");
+      const npCount = document.getElementById("npCount");
+      const npTitle = document.getElementById("npTitle");
+      const npMeta = document.getElementById("npMeta");
+      const seekBar = document.getElementById("seekBar");
+      const npTime = document.getElementById("npTime");
+      const archiveLink = document.getElementById("archiveLink");
+      const powerSwitch = document.getElementById("powerSwitch");
+      const listenBtn = document.getElementById("listenBtn");
+      const volSlider = document.getElementById("volSlider");
+      const volPct = document.getElementById("volPct");
+      const volKnobPointer = document.getElementById("volKnobPointer");
+      const tuneKnobPointer = document.getElementById("tuneKnobPointer");
+      const volKnobBtn = document.getElementById("volKnobBtn");
+      const tuneKnobBtn = document.getElementById("tuneKnobBtn");
+      const prevEpBtn = document.getElementById("prevEpBtn");
+      const nextEpBtn = document.getElementById("nextEpBtn");
+      const shuffleBtn = document.getElementById("shuffleBtn");
+      const catalogBtn = document.getElementById("catalogBtn");
+      const bandButtons = document.querySelectorAll(".btn-band");
+      const dialPips = document.querySelectorAll(".station-pip");
+      const hourHand = document.getElementById("hourHand");
+      const minuteHand = document.getElementById("minuteHand");
+      const secondHand = document.getElementById("secondHand");
+      const clockTicks = document.getElementById("clockTicks");
+
+      // Modal elements
+      const catalogModal = document.getElementById("catalogModal");
+      const closeCatalogBtn = document.getElementById("closeCatalogBtn");
+      const catalogSearch = document.getElementById("catalogSearch");
+      const showFilter = document.getElementById("showFilter");
+      const bandFilterPills = document.querySelectorAll("[data-filter-band]");
+      const catalogStatus = document.getElementById("catalogStatus");
+      const catalogList = document.getElementById("catalogList");
+
+      (function buildClockTicks() {
+        const cx = 90;
+        const cy = 61;
+        for (let i = 0; i < 60; i++) {
+          const angle = (i * 6 - 90) * (Math.PI / 180);
+          const cos = Math.cos(angle);
+          const sin = Math.sin(angle);
+          const rx = 82 / Math.max(Math.abs(cos), 0.001);
+          const ry = 54 / Math.max(Math.abs(sin), 0.001);
+          const dist = Math.min(rx, ry);
+          const isHour = i % 5 === 0;
+          const len = isHour ? 8.5 : 4;
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", (cx + cos * dist).toFixed(1));
+          line.setAttribute("y1", (cy + sin * dist).toFixed(1));
+          line.setAttribute("x2", (cx + cos * (dist - len)).toFixed(1));
+          line.setAttribute("y2", (cy + sin * (dist - len)).toFixed(1));
+          line.setAttribute("stroke-width", isHour ? "2" : "1.1");
+          clockTicks.appendChild(line);
+        }
+      })();
+
+      function updateClock() {
+        const now = new Date();
+        const sec = now.getSeconds() + now.getMilliseconds() / 1000;
+        const min = now.getMinutes() + sec / 60;
+        const hr = (now.getHours() % 12) + min / 60;
+        hourHand.setAttribute("transform", "rotate(" + (hr * 30).toFixed(2) + " 90 61)");
+        minuteHand.setAttribute("transform", "rotate(" + (min * 6).toFixed(2) + " 90 61)");
+        secondHand.setAttribute("transform", "rotate(" + (sec * 6).toFixed(2) + " 90 61)");
+        requestAnimationFrame(updateClock);
+      }
+      requestAnimationFrame(updateClock);
+
+      let audioCtx = null;
+
+      function saveState() {
+        try {
+          localStorage.setItem(
+            "golden_age_radio_v2",
+            JSON.stringify({
+              band: state.band,
+              volume: state.volume,
+              shuffleOn: state.shuffleOn
+            })
+          );
+        } catch (_) {}
+      }
+
+      function playTuningStatic(durationSec) {
+        try {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (!Ctx) return;
+          if (!audioCtx) audioCtx = new Ctx();
+          if (audioCtx.state === "suspended") audioCtx.resume();
+          const len = Math.floor(audioCtx.sampleRate * durationSec);
+          const buffer = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < len; i++) {
+            const env = Math.sin((i / len) * Math.PI);
+            data[i] = (Math.random() * 2 - 1) * 0.14 * env;
+          }
+          const src = audioCtx.createBufferSource();
+          src.buffer = buffer;
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = "bandpass";
+          filter.frequency.value = 1400;
+          filter.Q.value = 1.4;
+          const gain = audioCtx.createGain();
+          gain.gain.value = Math.max(0.05, state.volume / 100);
+          src.connect(filter);
+          filter.connect(gain);
+          gain.connect(audioCtx.destination);
+          src.start();
+        } catch (_) {}
+      }
+
+      function formatTime(sec) {
+        if (!Number.isFinite(sec) || sec < 0) return "--:--";
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+      }
+
+      // Group-preserving Shuffle: keeps Part 1, Part 2, etc. together in order
+      function extractStoryKeyAndPart(ep) {
+        const raw = (ep.title || "").trim();
+        const partMatch = raw.match(/(?:\b(?:part|pt\.?)\s*(\d+|[ivx]+)\b|\((\d+)\)$)/i);
+        let partNum = 0;
+        if (partMatch) {
+          const token = (partMatch[1] || partMatch[2] || "").toLowerCase();
+          const roman = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6 };
+          partNum = roman[token] || parseInt(token, 10) || 0;
+        }
+        const base = raw
+          .replace(/(?:\b(?:part|pt\.?)\s*(?:\d+|[ivx]+)\b|\(\d+\)$)/gi, "")
+          .replace(/[\s\-_:]+$/, "")
+          .toLowerCase();
+        return { key: (ep.show || "").toLowerCase() + "::" + base, partNum };
+      }
+
+      function buildPlayOrder(bandKey, keepCurrentRawIdx) {
+        const eps = STATIONS[bandKey].episodes;
+        if (!state.shuffleOn) {
+          state.playOrder[bandKey] = eps.map((_, i) => i);
+          if (typeof keepCurrentRawIdx === "number") {
+            state.episodeIdx[bandKey] = keepCurrentRawIdx;
+          }
+          return;
+        }
+
+        const groupsMap = new Map();
+        eps.forEach((ep, idx) => {
+          const info = extractStoryKeyAndPart(ep);
+          if (!groupsMap.has(info.key)) groupsMap.set(info.key, []);
+          groupsMap.get(info.key).push({ idx, partNum: info.partNum });
+        });
+
+        const groups = Array.from(groupsMap.values()).map((grp) => {
+          grp.sort((a, b) => a.partNum - b.partNum || a.idx - b.idx);
+          return grp.map((item) => item.idx);
+        });
+
+        for (let i = groups.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const tmp = groups[i];
+          groups[i] = groups[j];
+          groups[j] = tmp;
+        }
+
+        const flattened = groups.flat();
+        state.playOrder[bandKey] = flattened;
+        if (typeof keepCurrentRawIdx === "number") {
+          const pos = flattened.indexOf(keepCurrentRawIdx);
+          state.episodeIdx[bandKey] = pos >= 0 ? pos : 0;
+        } else {
+          state.episodeIdx[bandKey] = 0;
+        }
+      }
+
+      function getOrderedIndices(bandKey) {
+        const eps = STATIONS[bandKey].episodes;
+        if (!state.playOrder[bandKey] || state.playOrder[bandKey].length !== eps.length) {
+          buildPlayOrder(bandKey);
+        }
+        return state.playOrder[bandKey];
+      }
+
+      function currentStation() {
+        return STATIONS[state.band];
+      }
+
+      function currentRawIndex() {
+        const order = getOrderedIndices(state.band);
+        const pos = Math.max(0, Math.min(order.length - 1, state.episodeIdx[state.band]));
+        return order[pos];
+      }
+
+      function currentEpisode() {
+        return currentStation().episodes[currentRawIndex()];
+      }
+
+      // Parse Internet Archive filenames into clean titles & dates
+      function parseArchiveFile(file, col) {
+        const name = file.name || "";
+        const base = name.replace(/\.(mp3|ogg)$/i, "");
+        let title = (file.title || "").trim();
+        let date = (file.date || "").trim();
+
+        const dateMatch = base.match(/(\d{2,4})[-_.](\d{2})[-_.](\d{2})/) || base.match(/(?:^|_)(\d{6})(?:_|\s)/);
+        if (!date && dateMatch) {
+          if (dateMatch.length === 4) {
+            const yr = dateMatch[1].length === 2 ? "19" + dateMatch[1] : dateMatch[1];
+            date = yr + "-" + dateMatch[2] + "-" + dateMatch[3];
+          } else if (dateMatch[1] && dateMatch[1].length === 6) {
+            const s = dateMatch[1];
+            date = "19" + s.slice(0, 2) + "-" + s.slice(2, 4) + "-" + s.slice(4, 6);
+          }
+        }
+
+        if (!title) {
+          title = base
+            .replace(/^(?:Dragnet|Suspense|xminusone|Dimx|JB|FibberMcGeeAndMolly|Fibber_McGee__Molly|Sealed_Book|You_Are_There|Remote-|CamelCaravan)_?/i, "")
+            .replace(/^\d{2,4}[-_.]\d{2}[-_.]\d{2}[-_\s]*/i, "")
+            .replace(/^\d{6}\s*\d*\s*/i, "")
+            .replace(/\(\d+-\d+\)$/, "")
+            .replace(/[_]+/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+        }
+        if (!title) title = base;
+
+        return {
+          show: col.show,
+          title: title,
+          date: date || "Classic Broadcast",
+          url: "https://archive.org/download/" + col.id + "/" + encodeURIComponent(name).replace(/%2F/g, "/"),
+          sourceUrl: "https://archive.org/details/" + col.id
+        };
+      }
+
+      async function loadArchiveCatalog() {
+        const allCollections = [];
+        for (const bandKey of BAND_ORDER) {
+          for (const col of COLLECTIONS[bandKey]) {
+            allCollections.push({ bandKey, col });
+          }
+        }
+        state.catalogTotal = allCollections.length;
+        state.catalogLoaded = 0;
+        updateCatalogStatus();
+
+        await Promise.all(
+          allCollections.map(async ({ bandKey, col }) => {
+            try {
+              const resp = await fetch("https://archive.org/metadata/" + col.id + "/files");
+              if (!resp.ok) throw new Error("HTTP " + resp.status);
+              const json = await resp.json();
+              const files = Array.isArray(json.result) ? json.result : [];
+              const existingUrls = new Set(STATIONS[bandKey].episodes.map((e) => e.url));
+              const audioFiles = files.filter((f) => /\.(mp3|ogg)$/i.test(f.name || "") && !/\.afpk$/i.test(f.name || ""));
+              // Prefer MP3s if both MP3 and OGG exist for the same base
+              const seenBases = new Set();
+              audioFiles.sort((a, b) => (a.name.endsWith(".mp3") ? -1 : 1));
+              const added = [];
+              for (const f of audioFiles) {
+                const baseKey = f.name.replace(/\.(mp3|ogg)$/i, "").toLowerCase();
+                if (seenBases.has(baseKey)) continue;
+                seenBases.add(baseKey);
+                const ep = parseArchiveFile(f, col);
+                if (!existingUrls.has(ep.url)) {
+                  existingUrls.add(ep.url);
+                  added.push(ep);
+                }
+              }
+              if (added.length > 0) {
+                const prevRaw = currentRawIndex();
+                STATIONS[bandKey].episodes.push(...added);
+                if (bandKey === state.band) {
+                  buildPlayOrder(bandKey, prevRaw);
+                  render();
+                } else {
+                  buildPlayOrder(bandKey);
+                }
+              }
+            } catch (_) {
+              // Keep curated starter episodes if an Archive item fails
+            } finally {
+              state.catalogLoaded++;
+              updateCatalogStatus();
+              if (catalogModal.classList.contains("open")) {
+                populateShowDropdown();
+                renderCatalogList();
+              }
+            }
+          })
+        );
+      }
+
+      function totalEpisodeCount() {
+        return BAND_ORDER.reduce((sum, k) => sum + STATIONS[k].episodes.length, 0);
+      }
+
+      function isCatalogFiltered() {
+        return state.modalFilterBand !== "all" || showFilter.value !== "all" || (catalogSearch.value || "").trim() !== "";
+      }
+
+      function updateCatalogStatus(filteredCount) {
+        const total = totalEpisodeCount();
+        const shown = typeof filteredCount === "number" ? filteredCount : total;
+        const loadingPrefix = state.catalogLoaded < state.catalogTotal
+          ? "Loading (" + state.catalogLoaded + "/" + state.catalogTotal + ") \u00B7 "
+          : "";
+        if (isCatalogFiltered() || shown !== total) {
+          catalogStatus.textContent = loadingPrefix + shown + " of " + total + " episodes";
+        } else if (state.catalogLoaded < state.catalogTotal) {
+          catalogStatus.textContent = "Loading Archive (" + state.catalogLoaded + "/" + state.catalogTotal + ") \u00B7 " + total + " episodes";
+        } else {
+          catalogStatus.textContent = total + " episodes ready";
+        }
+      }
+
+      function populateShowDropdown() {
+        const currentVal = showFilter.value;
+        const shows = new Set();
+        for (const k of BAND_ORDER) {
+          if (state.modalFilterBand !== "all" && state.modalFilterBand !== k) continue;
+          for (const ep of STATIONS[k].episodes) shows.add(ep.show);
+        }
+        const sorted = Array.from(shows).sort();
+        showFilter.innerHTML = '<option value="all">All Shows</option>';
+        for (const s of sorted) {
+          const opt = document.createElement("option");
+          opt.value = s;
+          opt.textContent = s;
+          showFilter.appendChild(opt);
+        }
+        if (sorted.includes(currentVal)) showFilter.value = currentVal;
+      }
+
+      function renderCatalogList() {
+        const query = (catalogSearch.value || "").trim().toLowerCase();
+        const showVal = showFilter.value;
+        const activeUrl = currentEpisode().url;
+        const matches = [];
+
+        for (const bandKey of BAND_ORDER) {
+          if (state.modalFilterBand !== "all" && state.modalFilterBand !== bandKey) continue;
+          const st = STATIONS[bandKey];
+          st.episodes.forEach((ep, rawIdx) => {
+            if (showVal !== "all" && ep.show !== showVal) return;
+            if (query) {
+              const hay = (ep.show + " " + ep.title + " " + ep.date + " " + st.label).toLowerCase();
+              if (!hay.includes(query)) return;
+            }
+            matches.push({ bandKey, bandLabel: st.label, ep, rawIdx });
+          });
+        }
+
+        updateCatalogStatus(matches.length);
+        catalogList.innerHTML = "";
+        if (matches.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "catalog-empty";
+          empty.textContent = "No matching episodes found. Try another search or band filter.";
+          catalogList.appendChild(empty);
+          return;
+        }
+
+        const cap = Math.min(matches.length, 250);
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < cap; i++) {
+          const m = matches[i];
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "catalog-item" + (m.ep.url === activeUrl ? " current" : "");
+          btn.innerHTML =
+            '<div class="ci-main">' +
+              '<div class="ci-title"></div>' +
+              '<div class="ci-sub"></div>' +
+            '</div>' +
+            '<span class="ci-badge"></span>';
+          btn.querySelector(".ci-title").textContent = m.ep.title;
+          btn.querySelector(".ci-sub").textContent = m.ep.show + " \u00B7 " + m.ep.date;
+          btn.querySelector(".ci-badge").textContent = m.bandLabel;
+          btn.addEventListener("click", () => {
+            playSpecificEpisode(m.bandKey, m.rawIdx);
+            closeModal();
+          });
+          frag.appendChild(btn);
+        }
+        if (matches.length > cap) {
+          const note = document.createElement("div");
+          note.className = "catalog-empty";
+          note.textContent = "Showing first " + cap + " of " + matches.length + " matches. Refine your search to narrow results.";
+          frag.appendChild(note);
+        }
+        catalogList.appendChild(frag);
+      }
+
+      function openModal() {
+        populateShowDropdown();
+        renderCatalogList();
+        catalogModal.classList.add("open");
+        catalogSearch.focus();
+      }
+
+      function closeModal() {
+        catalogModal.classList.remove("open");
+      }
+
+      function playSpecificEpisode(bandKey, rawIdx) {
+        const changedBand = state.band !== bandKey;
+        state.band = bandKey;
+        const order = getOrderedIndices(bandKey);
+        const pos = order.indexOf(rawIdx);
+        state.episodeIdx[bandKey] = pos >= 0 ? pos : 0;
+        saveState();
+        loadAndPlay(changedBand);
+      }
+
+      function updateVolumeUI() {
+        audio.volume = state.volume / 100;
+        volSlider.value = state.volume;
+        volPct.textContent = state.volume + "%";
+        const deg = -135 + (state.volume / 100) * 270;
+        volKnobPointer.style.transform = "rotate(" + deg.toFixed(1) + "deg)";
+      }
+
+      function render() {
+        const st = currentStation();
+        const ep = currentEpisode();
+        const order = getOrderedIndices(state.band);
+        const idx = state.episodeIdx[state.band];
+
+        document.body.classList.toggle("radio-on", state.isOn);
+        document.body.classList.toggle("radio-tuning", state.status === "tuning");
+
+        powerSwitch.setAttribute("aria-pressed", state.isOn ? "true" : "false");
+        listenBtn.textContent = state.isOn ? "Pause" : (state.hasStartedOnce ? "Resume" : "Tune in");
+
+        shuffleBtn.classList.toggle("active", state.shuffleOn);
+        shuffleBtn.setAttribute("aria-pressed", state.shuffleOn ? "true" : "false");
+        shuffleBtn.textContent = state.shuffleOn ? "Shuffle: On" : "Shuffle: Off";
+
+        freqReadout.textContent = st.freq + " KC";
+        dialNeedle.style.left = st.needlePct + "%";
+        tuneKnobPointer.style.transform = "rotate(" + st.knobDeg + "deg)";
+
+        bandButtons.forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.band === state.band);
+        });
+        dialPips.forEach((pip) => {
+          pip.classList.toggle("active", pip.dataset.band === state.band);
+        });
+
+        npBand.textContent = st.label + " \u00B7 " + st.freq + " KC";
+        npCount.textContent = "Episode " + (idx + 1) + " of " + order.length;
+        archiveLink.href = ep.sourceUrl;
+
+        statusDot.className = "status-dot";
+        if (state.status === "standby") {
+          statusText.textContent = "STANDBY";
+          npTitle.textContent = "Ready to tune in";
+          npMeta.textContent = "Press Tune in to play " + ep.show + " \u2014 \"" + ep.title + "\" (" + ep.date + ").";
+        } else if (state.status === "tuning") {
+          statusDot.classList.add("tuning");
+          statusText.textContent = "TUNING";
+          npTitle.textContent = ep.show + ": " + ep.title;
+          npMeta.textContent = "Tuning to " + st.freq + " KC (" + ep.date + ")...";
+        } else if (state.status === "playing") {
+          statusDot.classList.add("on-air");
+          statusText.textContent = "ON AIR";
+          npTitle.textContent = ep.show + ": " + ep.title;
+          npMeta.textContent = "Original broadcast: " + ep.date + " \u00B7 On the air.";
+        } else if (state.status === "paused") {
+          statusText.textContent = "PAUSED";
+          npTitle.textContent = ep.show + ": " + ep.title;
+          npMeta.textContent = "Broadcast paused (" + ep.date + "). Press Resume to continue.";
+        } else if (state.status === "error") {
+          statusText.textContent = "SIGNAL LOST";
+          npTitle.textContent = ep.show + ": " + ep.title;
+          npMeta.textContent = "Unable to stream this recording right now. Try Next or Browse Catalog.";
+        }
+        updateMediaSession(ep, st);
+      }
+
+      function updateMediaSession(ep, st) {
+        if (!("mediaSession" in navigator)) return;
+        try {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: ep.title,
+            artist: ep.show,
+            album: st.label + " \u00B7 Golden Age Radio",
+            artwork: [
+              { src: "icon-192.png", sizes: "192x192", type: "image/png" },
+              { src: "icon-512.png", sizes: "512x512", type: "image/png" }
+            ]
+          });
+          navigator.mediaSession.playbackState = state.status === "playing" ? "playing" : (state.status === "paused" ? "paused" : "none");
+        } catch (_) {}
+      }
+      if ("mediaSession" in navigator) {
+        try {
+          navigator.mediaSession.setActionHandler("play", () => { if (!state.isOn) togglePower(); });
+          navigator.mediaSession.setActionHandler("pause", () => { if (state.isOn) togglePower(); });
+          navigator.mediaSession.setActionHandler("previoustrack", () => stepEpisode(-1));
+          navigator.mediaSession.setActionHandler("nexttrack", () => stepEpisode(1));
+        } catch (_) {}
+      }
+
+      function loadAndPlay(withStatic) {
+        const ep = currentEpisode();
+        state.isOn = true;
+        state.hasStartedOnce = true;
+        state.status = "tuning";
+        render();
+        if (withStatic) playTuningStatic(0.32);
+
+        if (audio.src !== ep.url) {
+          audio.src = ep.url;
+          seekBar.value = 0;
+          npTime.textContent = "00:00 / --:--";
+        }
+        const playPromise = audio.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            if (state.isOn) {
+              state.status = "error";
+              render();
+            }
+          });
+        }
+      }
+
+      function togglePower() {
+        if (state.isOn) {
+          state.isOn = false;
+          state.status = "paused";
+          audio.pause();
+          render();
+        } else {
+          loadAndPlay(true);
+        }
+      }
+
+      function selectBand(newBand) {
+        if (!STATIONS[newBand]) return;
+        const changed = state.band !== newBand;
+        state.band = newBand;
+        saveState();
+        if (state.isOn) {
+          loadAndPlay(changed);
+        } else {
+          if (changed) {
+            audio.removeAttribute("src");
+            seekBar.value = 0;
+            npTime.textContent = "00:00 / --:--";
+          }
+          render();
+        }
+      }
+
+      function stepEpisode(delta) {
+        const len = getOrderedIndices(state.band).length;
+        state.episodeIdx[state.band] = (state.episodeIdx[state.band] + delta + len) % len;
+        saveState();
+        if (state.isOn) {
+          loadAndPlay(true);
+        } else {
+          audio.removeAttribute("src");
+          seekBar.value = 0;
+          npTime.textContent = "00:00 / --:--";
+          render();
+        }
+      }
+
+      function toggleShuffle() {
+        const currRaw = currentRawIndex();
+        state.shuffleOn = !state.shuffleOn;
+        for (const k of BAND_ORDER) {
+          buildPlayOrder(k, k === state.band ? currRaw : undefined);
+        }
+        saveState();
+        render();
+      }
+
+      // Event Listeners
+      powerSwitch.addEventListener("click", togglePower);
+      listenBtn.addEventListener("click", togglePower);
+      shuffleBtn.addEventListener("click", toggleShuffle);
+      catalogBtn.addEventListener("click", openModal);
+      closeCatalogBtn.addEventListener("click", closeModal);
+      catalogModal.addEventListener("click", (e) => {
+        if (e.target === catalogModal) closeModal();
+      });
+
+      catalogSearch.addEventListener("input", renderCatalogList);
+      showFilter.addEventListener("change", renderCatalogList);
+      bandFilterPills.forEach((pill) => {
+        pill.addEventListener("click", () => {
+          state.modalFilterBand = pill.dataset.filterBand;
+          bandFilterPills.forEach((p) => p.classList.toggle("active", p === pill));
+          populateShowDropdown();
+          renderCatalogList();
+        });
+      });
+
+      bandButtons.forEach((btn) => {
+        btn.addEventListener("click", () => selectBand(btn.dataset.band));
+      });
+      dialPips.forEach((pip) => {
+        pip.addEventListener("click", () => selectBand(pip.dataset.band));
+      });
+
+      tuneKnobBtn.addEventListener("click", () => {
+        const nextIdx = (BAND_ORDER.indexOf(state.band) + 1) % BAND_ORDER.length;
+        selectBand(BAND_ORDER[nextIdx]);
+      });
+
+      volKnobBtn.addEventListener("click", () => {
+        state.volume = state.volume >= 95 ? 20 : Math.min(100, state.volume + 15);
+        updateVolumeUI();
+        saveState();
+      });
+
+      prevEpBtn.addEventListener("click", () => stepEpisode(-1));
+      nextEpBtn.addEventListener("click", () => stepEpisode(1));
+
+      volSlider.addEventListener("input", (e) => {
+        state.volume = Number(e.target.value);
+        updateVolumeUI();
+        saveState();
+      });
+
+      seekBar.addEventListener("input", (e) => {
+        if (Number.isFinite(audio.duration) && audio.duration > 0) {
+          audio.currentTime = (Number(e.target.value) / 100) * audio.duration;
+        }
+      });
+
+      audio.addEventListener("playing", () => {
+        if (state.isOn) {
+          state.status = "playing";
+          render();
+        }
+      });
+
+      audio.addEventListener("waiting", () => {
+        if (state.isOn) {
+          state.status = "tuning";
+          render();
+        }
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        if (Number.isFinite(audio.duration) && audio.duration > 0) {
+          seekBar.value = Math.round((audio.currentTime / audio.duration) * 100);
+          npTime.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
+        } else {
+          npTime.textContent = formatTime(audio.currentTime) + " / --:--";
+        }
+      });
+
+      audio.addEventListener("ended", () => {
+        if (state.isOn) stepEpisode(1);
+      });
+
+      audio.addEventListener("error", () => {
+        if (state.isOn) {
+          state.status = "error";
+          render();
+        }
+      });
+
+      for (const k of BAND_ORDER) buildPlayOrder(k);
+      updateVolumeUI();
+      render();
+      loadArchiveCatalog();
+    })();
+  </script>
+
+<script>
+/* Atomic theme helper: tint the page per active band (does not touch playback logic). */
+(function(){function sync(){var b=document.querySelector('.btn-band.active, .genre-tab.active');if(b&&b.dataset&&b.dataset.band){document.body.dataset.band=b.dataset.band;}}document.addEventListener('click',function(){setTimeout(sync,30)});sync();})();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>

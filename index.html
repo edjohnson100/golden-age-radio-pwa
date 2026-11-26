@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  GOLDEN AGE RADIO — Home (Atomic 50s theme, v2.2)
+  Google Sites embed: Insert > Embed > Embed code, paste this whole file, set height ~2050px (desktop).
+  Navigation lives in the Google Sites nav bar — there are no in-page links in this file to maintain.
+  v2.2 expands the dial to 9 stations (41 starter episodes across 22 Internet Archive collections).
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Golden Age Radio · Home</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#0F766E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Golden Age" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
+<style>
+:root{--cream:#FFF6DE;--paper:#FFEEC0;--paper2:#FFFDF4;--ink:#22201C;--ink-soft:#4A4438;
+--teal:#0F766E;--teal-bright:#14B8A6;--teal-dark:#0A4F4A;--coral:#FF6B4A;--mustard:#FFC53D;--gold:#E9B44C;
+--ruby:#D9382B;--plum:#7C4DA0;--sky:#2D9CDB;--pink:#FF8FA3;--shadow:5px 5px 0 var(--ink);--shadow-sm:3px 3px 0 var(--ink)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;color:var(--ink);
+background:radial-gradient(circle at 12% 8%,rgba(20,184,166,.16) 0 90px,transparent 91px),radial-gradient(circle at 88% 10%,rgba(255,107,74,.14) 0 110px,transparent 111px),repeating-conic-gradient(from 0deg at 50% -10%,rgba(15,118,110,.05) 0deg 6deg,transparent 6deg 18deg),var(--cream);
+display:flex;flex-direction:column;align-items:center;padding:0 12px 28px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(34,32,28,.10) 1.2px,transparent 1.3px);background-size:26px 26px;opacity:.35}
+.wrap{width:100%;max-width:860px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:18px}
+.checker{width:100%;height:14px;background:repeating-conic-gradient(var(--ink) 0% 25%,var(--cream) 0% 50%) 0 0/28px 14px;border:3px solid var(--ink);border-radius:999px;box-shadow:var(--shadow-sm);margin-top:14px}
+.masthead{text-align:center;padding:6px}
+.eyebrow{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.34em;color:var(--teal);text-transform:uppercase}
+h1.logo{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(2.4rem,6.5vw,3.6rem);line-height:1.05;color:var(--ruby);text-shadow:2px 2px 0 var(--mustard),4px 4px 0 rgba(34,32,28,.9);margin:4px 0 24px}
+h1.logo span{color:var(--teal)}
+.tagline{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.hero{text-align:center;max-width:660px}
+.hero h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:.06em;line-height:1.05}
+.hero h2::before{content:"\2605  \2605  \2605  ";color:var(--coral)}
+.hero h2::after{content:"  \2605  \2605  \2605";color:var(--coral)}
+.hero h2 em{font-family:'Pacifico',cursive;font-style:normal;color:var(--teal);letter-spacing:0;text-transform:none;font-size:1.05em}
+.hero h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:var(--ink-soft);margin-top:4px}
+.hero p{margin-top:8px;font-size:.95rem;line-height:1.6;color:var(--ink-soft)}
+.hero p b{color:var(--ink)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.pills span{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.1em;border:2px solid var(--ink);border-radius:999px;padding:4px 12px 2px;background:var(--paper2);box-shadow:2px 2px 0 var(--ink)}
+.machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
+@media(max-width:640px){.machines{grid-template-columns:1fr}}
+.card{background:var(--paper2);border:3px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.08em}
+.card h3 .yr{color:var(--ruby)}
+.mini{height:132px;border:2.5px solid var(--ink);border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.mini-radio{background:linear-gradient(155deg,#9A4524 0%,#5B2210 55%,#3B1307 100%)}
+.mini-radio .dial{width:78%;height:74px;background:radial-gradient(circle at 50% 40%,#FFFDF4 0%,#FFEEC0 80%);border:2.5px solid var(--ink);border-radius:8px;position:relative}
+.mini-radio .dial::before{content:"XII  \2022  III  \2022  VI  \2022  IX";position:absolute;top:6px;left:0;right:0;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:.8rem;letter-spacing:.18em;color:#5B3112}
+.mini-radio .dial::after{content:"";position:absolute;left:18%;right:18%;bottom:12px;height:3px;background:var(--ruby);border-radius:2px}
+.mini-radio .knob{position:absolute;bottom:10px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE299,#8A5A12);border:2px solid var(--ink)}
+.mini-radio .knob.l{left:16px}.mini-radio .knob.r{right:16px}
+.mini-juke{background:linear-gradient(180deg,#FF3B4E 0%,#FFBE4F 30%,#34E0D2 55%,#FFBE4F 80%,#FF3B4E 100%)}
+.mini-juke .inner{width:82%;height:104px;background:linear-gradient(180deg,#2A110B,#130705);border:2.5px solid var(--ink);border-radius:90px 90px 10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding-top:10px}
+.mini-juke .vinyl{width:52px;height:52px;border-radius:50%;background:repeating-radial-gradient(circle at center,#151515 0 2px,#333 2.5px 4px);border:2px solid #EEE;display:flex;align-items:center;justify-content:center}
+.mini-juke .vinyl i{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#FFDF8A,#D9382B);display:block}
+.mini-juke .strips{width:76%;height:22px;background:linear-gradient(180deg,#FCF6E6,#E6D5AF);border:2px solid #B5241C;border-radius:4px}
+.card p{font-size:.88rem;line-height:1.55;color:var(--ink-soft)}
+.card p b{color:var(--ink)}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:5px;font-size:.85rem;line-height:1.45;color:var(--ink-soft)}
+.card ul li::before{content:"\2605  ";color:var(--coral)}
+.section{width:100%;background:var(--paper2);border:3px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:20px}
+.section h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;margin-bottom:4px}
+.section h2 .accent{color:var(--ruby)}
+.section .lede{font-size:.9rem;line-height:1.6;color:var(--ink-soft);margin-bottom:12px}
+.section .lede b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:.86rem;line-height:1.45}
+th,td{text-align:left;padding:9px 10px;border-bottom:2px solid rgba(34,32,28,.14);vertical-align:top}
+th{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em}
+td:first-child{font-weight:700;white-space:nowrap}
+tr:last-child th,tr:last-child td{border-bottom:none}
+.genres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:640px){.genres{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.genres{grid-template-columns:1fr}}
+.genre{border:2.5px solid var(--ink);border-radius:14px;padding:12px 11px;box-shadow:var(--shadow-sm)}
+.genre h4{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.08em}
+.genre .count{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.genre p{font-size:.8rem;line-height:1.45;margin-top:6px;color:rgba(34,32,28,.85)}
+.genre.comedy{background:#FFE299}
+.genre.detective{background:#5EEAD4}
+.genre.horror{background:#B91C1C;color:#FFFDF4}.genre.horror p{color:rgba(255,253,244,.92)}
+.genre.western{background:#FDBA74}
+.genre.drama{background:#C4A5E8}
+.genre.holiday{background:#FF8A7A;color:#FFFDF4}.genre.holiday p{color:rgba(255,253,244,.92)}
+.genre.bigband{background:#FCD34D}
+.genre.scifi{background:#9EDCFF}
+.genre.history{background:#86EFAC}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+.step{border:2.5px dashed var(--teal);border-radius:14px;padding:14px}
+.step .n{font-family:'Pacifico',cursive;font-size:1.4rem;color:var(--ruby)}
+.step h4{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.08em;margin:2px 0 4px}
+.step p{font-size:.85rem;line-height:1.5;color:var(--ink-soft)}
+.note{font-size:.82rem;line-height:1.6;color:var(--ink-soft);background:rgba(15,118,110,.08);border:2px dashed var(--teal);border-radius:12px;padding:12px 14px}
+.note b{color:var(--ink)}
+.nav-hint{font-size:.82rem;color:var(--ink-soft);background:var(--paper2);border:2px dashed var(--teal);border-radius:10px;padding:8px 14px;line-height:1.45;max-width:640px;text-align:center}
+.nav-hint b{color:var(--teal-dark)}
+.footer{text-align:center;font-size:.72rem;color:var(--ink-soft);line-height:1.6;max-width:640px}
+.footer a{color:var(--teal);font-weight:700;text-decoration:none}
+.site-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.site-nav a{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;text-decoration:none;color:var(--ink);background:var(--paper2);border:2.5px solid var(--ink);border-radius:999px;padding:5px 14px 3px;box-shadow:var(--shadow-sm);transition:transform .12s ease,box-shadow .12s ease}
+.site-nav a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.site-nav a.current{background:var(--mustard)}
+.site-nav a .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--teal);margin-right:6px;vertical-align:1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="checker" aria-hidden="true"></div>
+  <header class="masthead">
+    <div class="eyebrow">Free Play &middot; Public Domain</div>
+    <h1 class="logo">Golden Age <span>Radio</span></h1>
+    <div class="tagline">Comedy &middot; Detective &middot; Horror &middot; Western &middot; Drama &middot; Holiday &middot; Big Band &middot; Sci-Fi &middot; History</div>
+    <nav class="site-nav" aria-label="Golden Age Radio pages">
+      <a href="index.html" class="current"><span class="dot"></span>Home</a>
+      <a href="mantel.html">Mantel Radio</a>
+      <a href="jukebox.html">Jukebox</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h2>One archive. <em>Two machines.</em></h2>
+    <h3>Pick the one you like looking at.</h3>
+    <p>Golden Age Radio is a little listening room for public-domain <b>Old Time Radio</b> &mdash; the comedy, detective, horror, western, drama, holiday music, big band, science-fiction, and history broadcasts America gathered around the dial to hear in the 1930s&ndash;50s. The shows stream free from the <b>Internet Archive</b>. No account, no subscription, no nickel required.</p>
+    <div class="pills"><span>41 starter episodes</span><span>9 stations</span><span>22 archive collections</span><span>Free &middot; Public domain</span></div>
+  </section>
+  <section class="machines" aria-label="Choose your player">
+    <article class="card">
+      <div class="mini mini-radio" aria-hidden="true"><div class="dial"></div><div class="knob l"></div><div class="knob r"></div></div>
+      <h3>The Living Room Dial</h3>
+      <p><b>For the living room.</b> A walnut mantel clock-radio with a live clock, a glowing magic-eye tuner and a red dial needle. Turn the tuning knob, or tap a station preset, and settle in.</p>
+      <ul><li>Tune by frequency &mdash; 600 to 1580 KC</li><li>Live analog clock built into the dial</li><li>Power switch, volume &amp; tuning knobs</li></ul>
+    </article>
+    <article class="card">
+      <div class="mini mini-juke" aria-hidden="true"><div class="inner"><div class="vinyl"><i></i></div><div class="strips"></div></div></div>
+      <h3>The Diner Selector</h3>
+      <p><b>For the diner booth.</b> A chrome arch-top jukebox with neon, a spinning record and red-and-cream title strips. Pick a strip &mdash; A1, C2, G1 &mdash; and drop the needle.</p>
+      <ul><li>Pick by title strip &mdash; A to I, 1 to 6+</li><li>Spinning vinyl &amp; tonearm that swings in</li><li>Chrome transport controls, free play</li></ul>
+    </article>
+  </section>
+  <p class="nav-hint"><b>Pick a player above</b> &mdash; Mantel Radio or Jukebox. They play the same shows, so pick whichever machine you like looking at.</p>
+  <section class="section" aria-label="Same underneath">
+    <h2>Same underneath <span class="accent">&mdash; by design</span></h2>
+    <p class="lede">The two players look and feel different on purpose. Underneath, they are <b>the same radio</b>. Nothing is exclusive to one machine: switch any time and you&rsquo;ll find the same shows, the same episodes, in the same order.</p>
+    <table>
+      <tr><th>What</th><th>Mantel Radio</th><th>Jukebox</th></tr>
+      <tr><td>Source</td><td>Internet Archive, public-domain recordings</td><td>Internet Archive, public-domain recordings</td></tr>
+      <tr><td>Stations</td><td>Comedy &middot; Detective &middot; Horror &middot; Western &middot; Drama &middot; Holiday &middot; Big Band &middot; Sci-Fi &middot; History</td><td>Comedy &middot; Detective &middot; Horror &middot; Western &middot; Drama &middot; Holiday &middot; Big Band &middot; Sci-Fi &middot; History</td></tr>
+      <tr><td>Starter episodes</td><td>41, hand-picked</td><td>41, hand-picked &mdash; the same 41</td></tr>
+      <tr><td>Full catalog</td><td>Loads live from the same 22 Archive collections</td><td>Loads live from the same 22 Archive collections</td></tr>
+      <tr><td>Playback</td><td>Play / pause, Prev / Next, seek bar</td><td>Play / pause, Prev / Next, seek bar</td></tr>
+      <tr><td>Shuffle</td><td>Shuffles shows, keeps multi-part stories in order</td><td>Shuffles shows, keeps multi-part stories in order</td></tr>
+      <tr><td>Browse Catalog</td><td>Search by show, title or year; filter by station</td><td>Search by show, title or year; filter by station</td></tr>
+      <tr><td>Cost</td><td>Free</td><td>Free</td></tr>
+    </table>
+    <p class="lede" style="margin:12px 0 0">The only difference is <b>how you choose</b>: the radio tunes by station and frequency, the jukebox picks by letter-and-number title strip. Everything after you press play is identical.</p>
+  </section>
+  <section class="section" aria-label="The nine stations">
+    <h2>The nine stations</h2>
+    <p class="lede">Nine presets on the dial, nine letters on the jukebox &mdash; A through I, 600 to 1580 KC.</p>
+    <div class="genres">
+      <div class="genre comedy"><h4>A &middot; Comedy</h4><div class="count">5 starter episodes</div><p>Fibber McGee and Molly, Jack Benny, Mel Blanc. 600 KC.</p></div>
+      <div class="genre detective"><h4>B &middot; Detective</h4><div class="count">5 starter episodes</div><p>Dragnet, Yours Truly, Johnny Dollar. 720 KC.</p></div>
+      <div class="genre horror"><h4>C &middot; Horror &amp; Supernatural</h4><div class="count">3 starter episodes</div><p>The Sealed Book, Inner Sanctum, Weird Circle, Creeps by Night. 840 KC.</p></div>
+      <div class="genre western"><h4>D &middot; Westerns &amp; Adventure</h4><div class="count">3 starter episodes</div><p>Frontier Gentleman, Escape. 960 KC.</p></div>
+      <div class="genre drama"><h4>E &middot; Drama</h4><div class="count">4 starter episodes</div><p>Suspense, Gunsmoke &mdash; Sorry, Wrong Number, Donovan&rsquo;s Brain. 1080 KC.</p></div>
+      <div class="genre holiday"><h4>F &middot; Holiday</h4><div class="count">7 starter episodes</div><p>Bing Crosby, Mel Torm&eacute;, Sleigh Ride &amp; more. 1225 KC.</p></div>
+      <div class="genre bigband"><h4>G &middot; Big Band &amp; Swing</h4><div class="count">4 starter episodes</div><p>Benny Goodman, Count Basie, Duke Ellington, Ella Fitzgerald. 1340 KC.</p></div>
+      <div class="genre scifi"><h4>H &middot; Sci-Fi</h4><div class="count">6 starter episodes</div><p>X Minus One, Dimension X. 1460 KC.</p></div>
+      <div class="genre history"><h4>I &middot; History</h4><div class="count">4 starter episodes</div><p>You Are There, American History, Stroke of Fate. 1580 KC.</p></div>
+    </div>
+  </section>
+  <section class="section" aria-label="How to listen">
+    <h2>How to listen</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1.</div><h4>Pick a machine</h4><p>Mantel radio for tuning, jukebox for picking strips. Either one &mdash; they play the same thing.</p></div>
+      <div class="step"><div class="n">2.</div><h4>Pick a station</h4><p>Tap any of the 9 stations across the dial or rack, or open Browse Catalog and search by show, title or year.</p></div>
+      <div class="step"><div class="n">3.</div><h4>Press play</h4><p>Press Tune In / Play. Use Prev / Next to move through episodes, Shuffle to mix them up, and the seek bar to jump ahead.</p></div>
+    </div>
+    <p class="note" style="margin-top:14px"><b>Good to know:</b> the 41 starter episodes play right away. While you listen, each player quietly loads the full catalog from the Internet Archive &mdash; hundreds more episodes from the same 22 collections &mdash; so Browse Catalog keeps growing. Shuffle never splits a multi-part story. It works on a phone, a tablet or a computer, with nothing to install.</p>
+  </section>
+  <footer class="footer">
+    <div>Public-domain Old Time Radio broadcasts streamed via the <a href="https://archive.org/details/oldtimeradio" target="_blank" rel="noopener noreferrer">Internet Archive</a>.</div>
+    <div>Created by Ed Johnson with a Gemini AI assist. &middot; MIT License &middot; November 2026</div>
+  </footer>
+  <div class="checker" aria-hidden="true"></div>
+</div>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
